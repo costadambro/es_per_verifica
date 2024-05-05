@@ -1,0 +1,10 @@
+FROM node
+ARG UID
+ARG GID
+EXPOSE 3000
+ADD entrypoint-node.sh /usr/local/bin/entrypoint-node.sh
+RUN groupadd -f informatica -g$GID
+RUN adduser --disabled-password --uid $UID --gid $GID --gecos "" informatica || true
+RUN chmod +x /usr/local/bin/entrypoint-node.sh
+RUN rm -rf node_modules
+CMD ["/usr/local/bin/entrypoint-node.sh"]
