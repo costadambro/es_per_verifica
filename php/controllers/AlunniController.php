@@ -44,7 +44,7 @@ class AlunniController
     $id=$args['id'];
 
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
-    $query = "UPDATE alunni SET nome='$nome', cognome='$cognome') WHERE id=$id";
+    $query = "UPDATE alunni SET nome='$nome', cognome='$cognome' WHERE id=$id";
     $mysqli_connection->query($query);
     return $response->withHeader("Content-type", "application/json")->withStatus(201);
   }
